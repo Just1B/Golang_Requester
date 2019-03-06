@@ -1,0 +1,6 @@
+requests : 10000000
+workers : 20
+
+url: YOUR_TARGET
+method : get
+timeout : 20
