@@ -68,13 +68,13 @@ func worker(id int, jobs <-chan int) {
 
 		resp, err := client.Do(req)
 
-		if err != nil || resp.StatusCode != 200 {
+		if err != nil {
 
 			log.Println("\x1b[33;1m|", err, "|\x1b[37;1m", strings.ToUpper(config.Method), time.Since(start), "| Worker", id, "| Job", j)
 		} else {
 
 			log.Println("\x1b[32m|", resp.Status, "|\x1b[37;1m", strings.ToUpper(config.Method), time.Since(start), "| Worker", id, "| Job", j)
-			defer resp.Body.Close()
+			resp.Body.Close()
 		}
 
 	}
